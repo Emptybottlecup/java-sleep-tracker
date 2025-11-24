@@ -19,8 +19,9 @@ public class SleepSession {
         String[] splitInformation = informationAboutSleep.split(";");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
 
-        this.startSleep = LocalDateTime.parse(splitInformation[0],formatter);
-        this.endSleep = LocalDateTime.parse(splitInformation[1],formatter);;
+        this.startSleep = LocalDateTime.parse(splitInformation[0], formatter);
+        this.endSleep = LocalDateTime.parse(splitInformation[1], formatter);
+        ;
         this.sleepCondition = SleepCondition.valueOf(splitInformation[2]);
     }
 
