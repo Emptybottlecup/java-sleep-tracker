@@ -50,8 +50,8 @@ public class SleepTrackerApp {
             List<Long> listOfMinutes = sleepSessions.stream().map(sleepSession -> Duration
                     .between(sleepSession.getStartSleep(), sleepSession.getEndSleep()).toMinutes()).toList();
 
-            return String.format("Средняя продолжительность сессии сна: %.2f%n", listOfMinutes.stream().mapToLong
-                    (Long::longValue).average().getAsDouble());
+            return String.format("Средняя продолжительность сессии сна: %.2f%n", listOfMinutes.stream().mapToLong(
+                    Long::longValue).average().getAsDouble());
         });
 
 
