@@ -61,8 +61,8 @@ public class SleepTrackerApp {
 
         sleepAnalyzer.addNewFunction(sleepSessions -> {
 
-            long days = Period.between(sleepSessions.get(0).getStartSleep().toLocalDate(), sleepSessions
-                    .get(sleepSessions.size() - 1).getEndSleep().toLocalDate()).getDays();
+            long days = Period.between(sleepSessions.get(0).getStartSleep().toLocalDate(), sleepSessions.get(
+                    sleepSessions.size() - 1).getEndSleep().toLocalDate()).getDays();
 
             if (sleepSessions.get(0).getStartSleep().getHour() < 12) {
                 days += 1;

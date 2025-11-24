@@ -162,7 +162,7 @@ public class SleepTrackerAppTest {
             Assertions.assertEquals("Наименьшая по продолжительности сессия сна: 45", result1);
             Assertions.assertEquals("Наименьшая по продолжительности сессия сна: 5", result2);
         } catch (EmptyListOfSleepSessions e) {
-
+            System.out.println(e.getMessage());
         }
     }
 
@@ -194,7 +194,7 @@ public class SleepTrackerAppTest {
             Assertions.assertEquals("Средняя продолжительность сессии сна: 340.83", result1);
             Assertions.assertEquals("Средняя продолжительность сессии сна: 31.33", result2);
         } catch (EmptyListOfSleepSessions e) {
-
+            System.out.println(e.getMessage());
         }
     }
 
@@ -210,7 +210,7 @@ public class SleepTrackerAppTest {
             Assertions.assertEquals("Количество сессий с плохим состоянием сна: 2", result1);
             Assertions.assertEquals("Количество сессий с плохим состоянием сна: 9", result2);
         } catch (EmptyListOfSleepSessions e) {
-
+            System.out.println(e.getMessage());
         }
     }
 
@@ -226,7 +226,7 @@ public class SleepTrackerAppTest {
             Assertions.assertEquals("Количество бессонных ночей: 2", result1);
             Assertions.assertEquals("Количество бессонных ночей: 8", result2);
         } catch (EmptyListOfSleepSessions e) {
-
+            System.out.println(e.getMessage());
         }
     }
 
@@ -250,7 +250,7 @@ public class SleepTrackerAppTest {
             Assertions.assertEquals("Ваш тип: Сова", result3);
             Assertions.assertEquals("Ваш тип: Жаворонок", result4);
         } catch (EmptyListOfSleepSessions e) {
-
+            System.out.println(e.getMessage());
         }
     }
 
