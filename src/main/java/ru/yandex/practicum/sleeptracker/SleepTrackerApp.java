@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
+import java.time.Period;
 import java.util.List;
 
 public class SleepTrackerApp {
@@ -57,8 +58,20 @@ public class SleepTrackerApp {
                 "состоянием сна: %d%n", sleepSessions.stream().filter(sleepSession -> sleepSession.
                 getSleepCondition().equals(SleepCondition.BAD)).toList().size()));
 
-        sleepAnalyzer.addNewFunction(sleepSessions -> String.format("Количество сессий с плохим " +
-                "состоянием сна: %d%n", sleepSessions.stream().filter(sleepSession -> sleepSession.
-                getSleepCondition().equals(SleepCondition.BAD)).toList().size()));
+        sleepAnalyzer.addNewFunction(sleepSessions -> {
+
+            long days = Period.between(sleepSessions.get(0).getStartSleep().toLocalDate(),  sleepSessions.get(
+                    sleepSessions.size() - 1).getEndSleep().toLocalDate()).getDays();
+
+            if (sleepSessions.get(0).getStartSleep().getHour() < 12) {
+                days += 1;
+            }
+
+            long sleepNights = sleepSessions.stream().filter(sleepSession -> ((sleepSession
+                .getStartSleep().getDayOfMonth() != sleepSession.getEndSleep().getDayOfMonth()) || (sleepSession
+                .getStartSleep().getHour() < 6 && sleepSession.getEndSleep().getHour() > 0))).count();
+
+            return String.format("Количество бессонных ночей: %d", days - sleepNights);
+        });
     }
 }
