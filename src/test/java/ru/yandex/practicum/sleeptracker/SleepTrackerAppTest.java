@@ -61,8 +61,8 @@ public class SleepTrackerAppTest {
             List<Long> listOfMinutes = sleepSessions.stream().map(sleepSession -> Duration
                     .between(sleepSession.getStartSleep(), sleepSession.getEndSleep()).toMinutes()).toList();
 
-            return String.format("Средняя продолжительность сессии сна: %.2f", listOfMinutes.stream().mapToLong
-                    (Long::longValue).average().getAsDouble());
+            return String.format("Средняя продолжительность сессии сна: %.2f", listOfMinutes.stream().mapToLong(
+                    Long::longValue).average().getAsDouble());
         });
 
 
@@ -178,7 +178,7 @@ public class SleepTrackerAppTest {
             Assertions.assertEquals("Наибольшая по продолжительности сессия сна: 500", result1);
             Assertions.assertEquals("Наибольшая по продолжительности сессия сна: 70", result2);
         } catch (EmptyListOfSleepSessions e) {
-
+            System.out.println(e.getMessage());
         }
     }
 
