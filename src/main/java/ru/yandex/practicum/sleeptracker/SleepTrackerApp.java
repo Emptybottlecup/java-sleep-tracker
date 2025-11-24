@@ -68,9 +68,9 @@ public class SleepTrackerApp {
                 days += 1;
             }
 
-            long sleepNights = sleepSessions.stream().filter(sleepSession -> ((sleepSession.getStartSleep()
-                    .getDayOfMonth() != sleepSession.getEndSleep().getDayOfMonth()) || sleepSession.getStartSleep()
-                    .getHour() <= 6)).count();
+            long sleepNights = sleepSessions.stream().filter(sleepSession -> ((sleepSession
+                    .getStartSleep().getDayOfMonth() != sleepSession.getEndSleep().getDayOfMonth()) || sleepSession
+                    .getStartSleep().isBefore(sleepSession.getStartSleep().withHour(6).withMinute(0)))).count();
 
             return String.format("Количество бессонных ночей: %d%n", days - sleepNights);
         });
@@ -81,9 +81,10 @@ public class SleepTrackerApp {
             String secondType = "Жаворонок";
             String thirdType = "Голубь";
 
-            List<String> sleepNightsTypes = sleepSessions.stream().filter(sleepSession -> ((sleepSession.
-                            getStartSleep().getDayOfMonth() != sleepSession.getEndSleep().getDayOfMonth()) ||
-                            sleepSession.getStartSleep().getHour() <= 6)).map(sleepSession -> {
+            List<String> sleepNightsTypes = sleepSessions.stream().filter(sleepSession -> ((sleepSession
+                    .getStartSleep().getDayOfMonth() != sleepSession.getEndSleep().getDayOfMonth()) || sleepSession
+                    .getStartSleep().isBefore(sleepSession.getStartSleep().withHour(6).withMinute(0))))
+                    .map(sleepSession -> {
                         if ((sleepSession.getStartSleep().getDayOfMonth() == sleepSession.getEndSleep().getDayOfMonth()
                                 || sleepSession.getStartSleep().isAfter(sleepSession.getStartSleep().withHour(23)
                                 .withMinute(0))) && sleepSession.getEndSleep().isAfter(sleepSession.getEndSleep()
@@ -93,8 +94,6 @@ public class SleepTrackerApp {
                                 .getDayOfMonth() && (sleepSession.getStartSleep().isBefore(sleepSession.getStartSleep()
                                 .withHour(22).withMinute(0)) && sleepSession.getEndSleep().isBefore(sleepSession
                                 .getEndSleep().withHour(7).withMinute(0)))) {
-                            System.out.println(sleepSession.getStartSleep() + "/n");
-                            System.out.println(sleepSession.getEndSleep() + "/n");
                             return secondType;
                         } else {
                             return thirdType;
