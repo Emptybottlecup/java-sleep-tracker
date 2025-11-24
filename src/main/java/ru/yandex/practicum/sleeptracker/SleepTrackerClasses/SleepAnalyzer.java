@@ -2,7 +2,6 @@ package ru.yandex.practicum.sleeptracker.SleepTrackerClasses;
 
 import ru.yandex.practicum.sleeptracker.UserExceptions.EmptyListOfSleepSessions;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
