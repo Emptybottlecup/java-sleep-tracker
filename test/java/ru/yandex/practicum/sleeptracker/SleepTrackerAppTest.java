@@ -31,13 +31,13 @@ public class SleepTrackerAppTest {
             mainSleepLog = SleepLogFileLoader.createListOfSleepSessions(Paths.get("src\\main\\resources\\" +
                     "sleep_log.txt"));
             emptyLog = SleepLogFileLoader.createListOfSleepSessions(Paths.get("test\\" +
-                    "test_empty_log.txt"));
+                    "testsLog\\test_empty_log.txt"));
             logWithoutSleep = SleepLogFileLoader.createListOfSleepSessions(Paths.get("test\\" +
-                    "test_without_sleep_night_log.txt"));
+                    "testsLog\\test_without_sleep_night_log.txt"));
             logWithOwlType = SleepLogFileLoader.createListOfSleepSessions(Paths.get("test\\" +
-                    "test_owl_type_log.txt"));
+                    "testsLog\\test_owl_type_log.txt"));
             logWithLarkType = SleepLogFileLoader.createListOfSleepSessions(Paths.get("test\\" +
-                    "test_lark_type_log.txt"));
+                    "testsLog\\test_lark_type_log.txt"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
