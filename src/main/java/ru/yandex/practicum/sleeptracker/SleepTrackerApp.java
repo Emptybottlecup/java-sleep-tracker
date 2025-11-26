@@ -14,6 +14,10 @@ import java.util.List;
 
 public class SleepTrackerApp {
 
+    public static final String firstType = "Сова";
+    public static final String secondType = "Жаворонок";
+    public static final String thirdType = "Голубь";
+
     public static void main(String[] args) {
         Path pathToSleepLog = Paths.get("src\\main\\resources\\sleep_log.txt");
         try {
@@ -76,11 +80,6 @@ public class SleepTrackerApp {
         });
 
         sleepAnalyzer.addNewFunction(sleepSessions -> {
-
-            String firstType = "Сова";
-            String secondType = "Жаворонок";
-            String thirdType = "Голубь";
-
             List<String> sleepNightsTypes = sleepSessions.stream().filter(sleepSession -> ((sleepSession
                     .getStartSleep().getDayOfMonth() != sleepSession.getEndSleep().getDayOfMonth()) || sleepSession
                     .getStartSleep().isBefore(sleepSession.getStartSleep().withHour(6).withMinute(0))))

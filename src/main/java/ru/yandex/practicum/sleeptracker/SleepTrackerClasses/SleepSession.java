@@ -21,7 +21,6 @@ public class SleepSession {
 
         this.startSleep = LocalDateTime.parse(splitInformation[0], formatter);
         this.endSleep = LocalDateTime.parse(splitInformation[1], formatter);
-        ;
         this.sleepCondition = SleepCondition.valueOf(splitInformation[2]);
     }
 
